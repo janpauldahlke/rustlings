@@ -1,5 +1,3 @@
-#![allow(dead_code)]
-#![allow(unused_variables)]
 // hashmaps3.rs
 
 // A list of scores (one per line) of a soccer match is given. Each line
@@ -15,8 +13,6 @@
 // Make me pass the tests!
 
 // Execute `rustlings hint hashmaps3` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
 
 use std::collections::HashMap;
 
