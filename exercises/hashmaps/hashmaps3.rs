@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+#![allow(unused_variables)]
 // hashmaps3.rs
 
 // A list of scores (one per line) of a soccer match is given. Each line
@@ -40,6 +42,33 @@ fn build_scores_table(results: String) -> HashMap<String, Team> {
         // will be number of goals conceded from team_2, and similarly
         // goals scored by team_2 will be the number of goals conceded by
         // team_1.
+        //England,France,4,2´
+
+        // with slight halp for and_modify (https://www.reddit.com/r/rust/comments/w4vf5a/idiomatic_hashmap_access_from_rustlings_exercise/)
+
+        scores
+            .entry(team_1_name.to_owned())
+            .and_modify(|e| {
+                e.goals_scored += team_1_score;
+                e.goals_conceded += team_2_score;
+            })
+            .or_insert_with_key(|key| Team {
+                name: team_1_name.clone(),
+                goals_scored: team_1_score.clone(),
+                goals_conceded: team_2_score.clone(),
+            });
+
+        scores
+            .entry(team_2_name.to_owned())
+            .and_modify(|e| {
+                e.goals_scored += team_2_score;
+                e.goals_conceded += team_1_score;
+            })
+            .or_insert_with_key(|key| Team {
+                name: team_2_name.clone(),
+                goals_scored: team_2_score.clone(),
+                goals_conceded: team_1_score.clone(),
+            });
     }
     scores
 }
