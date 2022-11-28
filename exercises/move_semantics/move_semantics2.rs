@@ -2,12 +2,15 @@
 // Make me compile without changing line 13 or moving line 10!
 // Execute `rustlings hint move_semantics2` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
-
 fn main() {
     let vec0 = Vec::new();
 
-    let mut vec1 = fill_vec(vec0);
+    // -- solution 1
+    //let myData = &vec0;
+    //let mut vec1 = fill_vec(myData.to_vec());
+
+    // --solution  2
+    let mut vec1 = fill_vec(vec0.to_owned());
 
     // Do not change the following line!
     println!("{} has length {} content `{:?}`", "vec0", vec0.len(), vec0);
