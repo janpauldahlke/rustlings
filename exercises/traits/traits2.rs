@@ -11,17 +11,21 @@
 // you can do this!
 // Execute `rustlings hint traits2` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
-
 trait AppendBar {
     fn append_bar(self) -> Self;
 }
 
 impl AppendBar for Vec<String> {
-    fn append_bar(self) -> Vec<String> {
-        for element in self.iter_mut() {
-            format!("{}{}", element, "Bar".to_string())
-        }
+    //https://lazyren.github.io/studylog/rustlings-traits.html
+    /* fn append_bar(self) -> Self {
+        let mut cloned_self = self.clone();
+        cloned_self.push("Bar".to_string());
+        cloned_self
+    } */
+
+    fn append_bar(mut self) -> Self {
+        self.push("Bar".into());
+        self
     }
 }
 

@@ -13,6 +13,14 @@ pub trait Licensed {
     fn licensing_info(&self) -> String;
 }
 
+
+impl<T> Licensed for <T> {
+    fn licensing_info(self: T) -> Self {
+        
+    }
+}
+
+
 struct SomeSoftware {
     version_number: i32,
 }
