@@ -6,8 +6,6 @@
 //    list_of_results functions.
 // Execute `rustlings hint iterators3` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
-
 #[derive(Debug, PartialEq, Eq)]
 pub enum DivisionError {
     NotDivisible(NotDivisibleError),
@@ -37,12 +35,12 @@ pub fn divide(a: i32, b: i32) -> Result<i32, DivisionError> {
 
 // Complete the function and return a value of the correct type so the test passes.
 // Desired output: Ok([1, 11, 1426, 3])
-fn result_with_list() -> () {
+fn result_with_list() -> Result<Vec<i32>, DivisionError> {
     let numbers = vec![27, 297, 38502, 81];
     let division_results = numbers.into_iter().map(|n| divide(n, 27));
 
-    let x: Result<Vec, DivisionError> = division_results.collect::<_>();
-    x
+    let result: Result<Vec<i32>, DivisionError> = division_results.collect();
+    result
 }
 
 // Complete the function and return a value of the correct type so the test passes.
@@ -50,9 +48,11 @@ fn result_with_list() -> () {
 fn list_of_results() -> Vec<Result<i32, DivisionError>> {
     let numbers = vec![27, 297, 38502, 81];
     let division_results = numbers.into_iter().map(|n| divide(n, 27));
-    let x: Vec<Result<i32, DivisionError>> = division_results.collect();
-    x
+    let result: Vec<Result<i32, DivisionError>> = division_results.collect();
+    result
 }
+
+// it is about the difference that collect does. see how just annoting the type left makes collect know how to unwap the result
 
 #[cfg(test)]
 mod tests {
